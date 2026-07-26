@@ -1,0 +1,130 @@
+<html lang="en" data-theme="obsidian">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AURA // Obsidian Vault</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="fluid-matrix" aria-hidden="true"></canvas>
+
+    <header class="vault-header" role="banner">
+      <div class="brand-mark">
+        <span class="brand-text">AURA</span>
+        <span class="brand-sub">OBSIDIAN</span>
+      </div>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <button class="nav-trigger" data-access="portfolio">Portfolio</button>
+        <button class="nav-trigger" data-access="liquidity">Liquidity</button>
+        <button class="nav-trigger" data-access="concierge">Concierge</button>
+        <button class="nav-trigger auth-trigger" data-access="authenticate">
+          <span class="auth-indicator"></span>
+          Access Vault
+        </button>
+      </nav>
+    </header>
+
+    <main class="vault-interior" role="main">
+      <section class="hero-sequence" aria-labelledby="hero-heading">
+        <div class="hero-content">
+          <h1 id="hero-heading" class="hero-title">
+            Capital,
+            <em>unbound</em>
+            .
+          </h1>
+          <p class="hero-subtitle">
+            An institutional-grade digital enclave for the allocation,
+            preservation, and acceleration of asymmetric assets.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" id="initiate-sequence">
+              Initialize Access
+            </button>
+            <button class="btn-ghost" id="review-thesis">Review Thesis</button>
+          </div>
+        </div>
+        <div class="hero-metrics" aria-label="Live vault metrics">
+          <article class="metric-card" data-metric="tvl">
+            <span class="metric-label">Total Vaulted</span>
+            <span class="metric-value" id="tvl-value">$0.00</span>
+            <span class="metric-delta positive">+14.2% QoQ</span>
+          </article>
+          <article class="metric-card" data-metric="yield">
+            <span class="metric-label">Net Yield</span>
+            <span class="metric-value" id="yield-value">0.00%</span>
+            <span class="metric-delta positive">+2.4% YoY</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="asset-grid" aria-labelledby="grid-heading">
+        <h2 id="grid-heading" class="visually-hidden">Active Asset Classes</h2>
+        <template id="asset-card-template">
+          <article class="asset-card">
+            <div class="asset-header">
+              <span class="asset-ticker"></span>
+              <span class="asset-status"></span>
+            </div>
+            <h3 class="asset-name"></h3>
+            <div class="asset-footer">
+              <span class="asset-allocation"></span>
+              <span class="asset-performance"></span>
+            </div>
+          </article>
+        </template>
+        <div class="grid-container" id="asset-grid-container"></div>
+      </section>
+    </main>
+
+    <dialog
+      id="auth-dialog"
+      class="vault-dialog"
+      aria-labelledby="dialog-title"
+    >
+      <form method="dialog" class="dialog-form">
+        <h2 id="dialog-title" class="dialog-heading">
+          Cryptographic Handshake
+        </h2>
+        <p class="dialog-subtext">
+          Enter your enclave credentials to decrypt the vault.
+        </p>
+        <div class="input-group">
+          <label for="access-key" class="input-label">Access Key</label>
+          <input
+            type="password"
+            id="access-key"
+            class="input-field"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="mfa-token" class="input-label">MFA Token</label>
+          <input
+            type="text"
+            id="mfa-token"
+            class="input-field"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="6"
+            required
+          />
+        </div>
+        <div class="dialog-actions">
+          <button value="cancel" class="btn-ghost">Abort</button>
+          <button value="default" class="btn-primary" id="submit-auth">
+            Decrypt
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
